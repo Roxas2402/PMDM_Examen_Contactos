@@ -44,7 +44,6 @@ public class ContactosModelAdapters extends RecyclerView.Adapter<ContactosModelA
         holder.lblCiclo.setText(String.valueOf(c.getCiclo()));
         holder.lblTelefono.setText(String.valueOf(c.getTelefono()));
 
-        //TODO: 10.11: Crear botón eliminar
         holder.btnEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

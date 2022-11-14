@@ -18,7 +18,6 @@ public class AddContactoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO: 3.01: Inicializar binding
         binding = ActivityAddContactoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
