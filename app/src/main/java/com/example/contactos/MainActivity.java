@@ -13,6 +13,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -68,9 +69,25 @@ public class MainActivity extends AppCompatActivity {
                     if (result.getData() != null && result.getData().getExtras() != null) {
                         ContactoModel c = (ContactoModel) result.getData().getExtras().getSerializable("CONT");
                         contactoModelsList.add(c);
+                        adapter.notifyItemInserted(contactoModelsList.size() - 1);
                     }
                 }
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("LISTA", contactoModelsList);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        ArrayList<ContactoModel> kk = (ArrayList<ContactoModel>) savedInstanceState.get("LISTA");
+        contactoModelsList.addAll(kk);
+        adapter.notifyItemRangeInserted(0, contactoModelsList.size());
     }
 }
