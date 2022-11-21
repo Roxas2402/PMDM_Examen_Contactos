@@ -38,20 +38,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         contactoModelsList = new ArrayList<>();
-
-
         adapter = new ContactosModelAdapters(contactoModelsList, R.layout.contacto_view_holder, this);
         int columnas = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 2 : 1;
         layoutManager = new GridLayoutManager(this, columnas);
         binding.contentMain.contenedor.setLayoutManager(layoutManager);
         binding.contentMain.contenedor.setAdapter(adapter);
         inicializaLaunchers();
-
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable("LISTA", contactoModelsList);
-
     }
 
     @Override
